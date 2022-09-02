@@ -3,24 +3,50 @@ import "./App.css";
 
 function App() {
   const [result, setResult] = useState("0");
+  const [reset, setReset] = useState(false);
 
   const handleClick = (e) => {
-    if (result === "0") {
-      setResult(e.target.innerHTML);
+    let value = e.target.innerHTML;
+    let checkValue = result.slice(-1);
+
+    if (reset === true) {
+      if (value === "+" || value === "-" || value === "*" || value === "/") {
+        setResult(result.concat(value));
+        setReset(false);
+      } else {
+        setResult(value);
+        setReset(false);
+      }
+    } else if (result === "0") {
+      if (value === "/" || value === "*" || value === "+") {
+        setResult("0");
+      } else {
+        setResult(value);
+      }
+    } else if (
+      (checkValue === "+" ||
+        checkValue === "-" ||
+        checkValue === "*" ||
+        checkValue === "/") &&
+      (value === "+" || value === "-" || value === "*" || value === "/")
+    ) {
+      setResult(result.slice(0, -1) + value);
     } else {
-      setResult(result.concat(e.target.innerHTML));
+      setResult(result.concat(value));
     }
   };
 
   const clear = () => {
     setResult("0");
+    setReset(false);
   };
 
   const calculate = () => {
     try {
+      setReset(true);
       setResult(eval(result).toString());
     } catch (error) {
-      setResult("Error");
+      setReset(false);
     }
   };
 
