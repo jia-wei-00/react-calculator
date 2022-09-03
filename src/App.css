@@ -12,7 +12,9 @@ body {
   min-height: 100vh;
   background: #edf1f4;
 }
-
+.dark {
+  background: #282c2f;
+}
 .calculator {
   position: relative;
   width: 340px;
@@ -93,4 +95,17 @@ body {
 .calculator .buttons span#equal:active {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff,
     inset 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.toggleBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #555;
+  cursor: pointer;
+  border: 2px solid #edf1f4;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
 }
