@@ -10,7 +10,13 @@ function App() {
     let checkValue = result.slice(-1);
 
     if (reset === true) {
-      if (value === "+" || value === "-" || value === "*" || value === "/") {
+      if (
+        value === "+" ||
+        value === "-" ||
+        value === "*" ||
+        value === "/" ||
+        value === "."
+      ) {
         setResult(result.concat(value));
         setReset(false);
       } else {
